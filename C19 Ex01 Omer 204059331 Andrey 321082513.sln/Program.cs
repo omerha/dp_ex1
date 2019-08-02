@@ -15,7 +15,7 @@ namespace C19_Ex01_Omer_204059331_Andrey_321082513.sln
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MainPage());
         }
     }
 }
