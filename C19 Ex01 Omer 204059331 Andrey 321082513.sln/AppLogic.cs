@@ -1,4 +1,5 @@
-﻿using FacebookWrapper;
+﻿using C19_Ex01_Omer_204059331_Andrey_321082513.sln;
+using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 using System;
 using System.Collections.Generic;
@@ -7,11 +8,11 @@ using System.Text;
 
 namespace FacebookApp
 {
-    class AppLogic
+    public class AppLogic
     {
         private static readonly object m_AppLogicLock = new object();
         private static AppLogic m_AppLogic = null;
-
+        private StoreToken m_StoreToken = new StoreToken();
         private AppLogic()
         {
         }
@@ -70,6 +71,7 @@ namespace FacebookApp
 
             if (!string.IsNullOrEmpty(LoginResult.AccessToken))
             {
+                m_StoreToken.SaveLogin(LoginResult.AccessToken, "test1");
                 resUserData.m_User = LoginResult.LoggedInUser;
             }
             return resUserData;
@@ -109,7 +111,50 @@ namespace FacebookApp
                 }
             }
         }
+        
+        public void GetAllTaggedFriendsFromPhotos(UserData i_UserData)
+        {
+            string currUserNameAsKey = "";
+            foreach (Album currAlbum in i_UserData.m_ListOfNoEmptyAlbums)
+            {
+                foreach (Photo currPhoto in currAlbum.Photos)
+                {
+                    foreach (PhotoTag currPhotoTag in currPhoto.Tags)
+                    {
+                        currUserNameAsKey = currPhotoTag.User.FirstName + " " + currPhotoTag.User.LastName;
+                        if(i_UserData.m_BestFriendsDict.ContainsKey(currUserNameAsKey))
+                        {
+                            i_UserData.m_BestFriendsDict[currUserNameAsKey] += 1;
+                        }
+                        else
+                        {
+                            i_UserData.m_BestFriendsDict.Add(currUserNameAsKey, 1);
+                        }
+                    }
 
+                }
+            }
+        }
+
+        public void GetAllTaggedFriendsFromCheckins(UserData i_UserData)
+        {
+            string currUserNameAsKey = "";
+            foreach (Checkin currCheckin in i_UserData.m_User.Checkins)
+            {
+                foreach (User currUser in currCheckin.TaggedUsers)
+                {
+                    currUserNameAsKey = currUser.FirstName + " " + currUser.LastName;
+                    if (i_UserData.m_BestFriendsDict.ContainsKey(currUserNameAsKey))
+                    {
+                        i_UserData.m_BestFriendsDict[currUserNameAsKey] += 1;
+                    }
+                    else
+                    {
+                        i_UserData.m_BestFriendsDict.Add(currUserNameAsKey, 1);
+                    }
+                }
+            }
+        }
         private void findAllUserFriends(UserData i_UserData)
         {
             foreach (User user in i_UserData.m_User.Friends)
