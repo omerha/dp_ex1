@@ -47,9 +47,14 @@ namespace FacebookApp
 
         public UserData LoginAndInit()
         {
-            UserData resUserData = new UserData();
+            UserData resUserData = null;
+            if (m_StoreToken.LoadLogin("test1"))
+            {
+                //Found user token
+            }
             LoginResult = FacebookService.Login(
-                "1450160541956417",
+                //"1450160541956417",
+                "753926335063958",
                 "public_profile",
                 "email",
                 "publish_to_groups",
@@ -72,8 +77,9 @@ namespace FacebookApp
             if (!string.IsNullOrEmpty(LoginResult.AccessToken))
             {
                 m_StoreToken.SaveLogin(LoginResult.AccessToken, "test1");
-                resUserData.m_User = LoginResult.LoggedInUser;
             }
+            resUserData = new UserData(LoginResult.LoggedInUser);
+
             return resUserData;
         }
 
@@ -163,6 +169,11 @@ namespace FacebookApp
             }
         }
 
+
+        public List<string> GetTopFiveBestFriends(UserData i_UserData)
+        {
+            return new List<string>(i_UserData.OrderDictByValueInt(i_UserData.m_BestFriendsDict).Keys);
+        }
     }
 }
 
