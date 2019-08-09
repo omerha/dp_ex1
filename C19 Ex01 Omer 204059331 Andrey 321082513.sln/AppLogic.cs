@@ -143,25 +143,48 @@ namespace FacebookApp
                 }
             }
         }
-        
 
-        public void GetAllTaggedFriendsFromPhotos(UserData i_UserData)
+        private string getUserFullName(User i_User)
+        {
+            string name;
+            try
+            {
+                name = i_User.FirstName + " " + i_User.LastName;
+            }
+            catch (Exception)
+            {
+                name = i_User.Name;
+            }
+
+            return name;
+        }
+
+        private void collectUsersFromTag(PhotoTag i_Tag, UserData i_UserData)
         {
             string currUserNameAsKey = "";
+            currUserNameAsKey = getUserFullName(i_Tag.User);
+
+            if (i_UserData.BestFriendsDict.ContainsKey(currUserNameAsKey))
+            {
+                i_UserData.BestFriendsDict[currUserNameAsKey] += 1;
+            }
+            else
+            {
+                i_UserData.BestFriendsDict.Add(currUserNameAsKey, 1);
+            }
+        }
+        
+        public void GetAllTaggedFriendsFromPhotos(UserData i_UserData)
+        {
             foreach (Album currAlbum in i_UserData.NonEmptyAlbumsList)
             {
                 foreach (Photo currPhoto in currAlbum.Photos)
                 {
-                    foreach (PhotoTag currPhotoTag in currPhoto.Tags)
+                    if (currPhoto.Tags != null)
                     {
-                        currUserNameAsKey = currPhotoTag.User.FirstName + " " + currPhotoTag.User.LastName;
-                        if(i_UserData.BestFriendsDict.ContainsKey(currUserNameAsKey))
+                        foreach (PhotoTag currPhotoTag in currPhoto.Tags)
                         {
-                            i_UserData.BestFriendsDict[currUserNameAsKey] += 1;
-                        }
-                        else
-                        {
-                            i_UserData.BestFriendsDict.Add(currUserNameAsKey, 1);
+                            collectUsersFromTag(currPhotoTag, i_UserData);
                         }
                     }
 
