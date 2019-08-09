@@ -8,13 +8,19 @@ namespace FacebookApp
 {
     public class UserData
     {
-        public Dictionary<string, int> m_BestFriendsDict= new Dictionary<string, int>();
-        public List<User> m_UserFriends { get; set; }
-        public List<Album> m_ListOfNoEmptyAlbums { get; set; }
-        public User m_User { get; set; }
+        public Dictionary<string, int> BestFriendsDict { get; set; }
+
+        public List<User> UserFriendsList { get; set; }
+        public List<Album> NonEmptyAlbumsList { get; set; }
+        public List<Status> UserStatusList { get; set; }
+        public User LocalUser { get; set; }
         public UserData(User i_User)
         {
-            m_User = i_User;
+            LocalUser = i_User;
+            BestFriendsDict = new Dictionary<string, int>();
+            UserFriendsList = new List<User>();
+            NonEmptyAlbumsList = new List<Album>();
+            UserStatusList = new List<Status>();
         }
         public Dictionary<string,int> OrderDictByValueInt(Dictionary<string, int> i_Dict)
         {

@@ -14,7 +14,7 @@ namespace C19_Ex01_Omer_204059331_Andrey_321082513.sln
         public void SaveLogin(string i_DataToSave, string i_DataFileName)
         {
             string tempPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
-            tempPath = Path.Combine(tempPath, i_DataFileName + ".txt");
+            tempPath = Path.Combine(tempPath, i_DataFileName);
             m_Token = i_DataToSave;
             using (Stream stream = new FileStream(tempPath, FileMode.CreateNew))
             {
@@ -26,9 +26,9 @@ namespace C19_Ex01_Omer_204059331_Andrey_321082513.sln
         {
             bool loadRes = false;
             string tempPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
-            tempPath = Path.Combine(tempPath, i_DataFileName + ".txt");
+            tempPath = Path.Combine(tempPath, i_DataFileName);
             StoreToken temp = null;
-            if (Directory.Exists(Path.GetDirectoryName(tempPath)))
+            if (File.Exists(tempPath))
             {
                 using (Stream stream = new FileStream(tempPath, FileMode.Open))
                 {

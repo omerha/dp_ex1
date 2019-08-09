@@ -27,8 +27,15 @@ namespace C19_Ex01_Omer_204059331_Andrey_321082513.sln
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            m_UserData = m_AppLogic.LoginAndInit();
-
+            try
+            {
+                m_UserData = m_AppLogic.LoginAndInit();
+            }
+            catch(Exception exce)
+            {
+               
+                //handle exception
+            }
         }
     }
 }
