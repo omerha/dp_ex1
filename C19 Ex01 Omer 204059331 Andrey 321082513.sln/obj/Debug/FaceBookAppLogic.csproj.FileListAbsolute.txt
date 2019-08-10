@@ -1,5 +1,0 @@
-C:\Users\omerha\Desktop\dp_ex1\C19 Ex01 Omer 204059331 Andrey 321082513.sln\obj\Debug\FaceBookAppLogic.csprojAssemblyReference.cache
-C:\Users\omerha\Desktop\dp_ex1\C19 Ex01 Omer 204059331 Andrey 321082513.sln\obj\Debug\C19_Ex01_Omer_204059331_Andrey_321082513.sln.MainPage.resources
-C:\Users\omerha\Desktop\dp_ex1\C19 Ex01 Omer 204059331 Andrey 321082513.sln\obj\Debug\C19_Ex01_Omer_204059331_Andrey_321082513.sln.Properties.Resources.resources
-C:\Users\omerha\Desktop\dp_ex1\C19 Ex01 Omer 204059331 Andrey 321082513.sln\obj\Debug\FaceBookAppLogic.csproj.GenerateResource.cache
-C:\Users\omerha\Desktop\dp_ex1\C19 Ex01 Omer 204059331 Andrey 321082513.sln\obj\Debug\FaceBookAppLogic.csproj.CoreCompileInputs.cache
