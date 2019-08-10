@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<StoreToken xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <m_Token>EAAUm6cZC4eUEBAF85aS7h2bZAIZAYRCC2USOzWCrRkPYoF1mFJut1FOCYNHqZBCaAUH09xOGD9CZAl6ZBmyV6xy9SeJrmISSQvQuo4MqJU3pZC5KSUcM7XYahZClbV1D4zJIbwrdWg75siK98SJG4uVvXWvwkG4BeF8bLFoeT3R3WwZDZD</m_Token>
+</StoreToken>
