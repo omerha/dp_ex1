@@ -234,5 +234,10 @@ namespace FacebookApp
         {
             return new List<string>(i_UserData.OrderDictByValueInt(i_UserData.BestFriendsDict).Keys);
         }
+
+        public void LogOutFromFacebook()
+        {
+            m_StoreToken.SaveLogin(string.Empty, r_TokenFileName);
+        }
     }
 }

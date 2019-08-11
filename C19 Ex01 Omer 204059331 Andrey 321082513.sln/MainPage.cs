@@ -22,9 +22,10 @@ namespace C19_Ex01_Omer_204059331_Andrey_321082513.sln
             m_AppLogic = AppLogic.Instance;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void FormLogin_Load(object sender = null, EventArgs e = null)
         {
             hideAllPanels();
+            LoginButton.Visible = true;
             Width = 380;
             Height = 160;
         }
@@ -47,6 +48,15 @@ namespace C19_Ex01_Omer_204059331_Andrey_321082513.sln
             panelPageOwner.Visible = true;
             LoginButton.Visible = false;
             panelUpPart.Visible = true;
+            buttonLogout.Visible = true;
+        }
+
+        private void hideUIComponents()
+        {
+            panelOptions.Visible = false;
+            panelPageOwner.Visible = false;
+            panelUpPart.Visible = false;
+            buttonLogout.Visible = false;        
         }
 
         private void loginFacebook()
@@ -211,6 +221,13 @@ namespace C19_Ex01_Omer_204059331_Andrey_321082513.sln
                     break;
                 }
             }
+        }
+
+        private void buttonLogOut_Click(object sender, EventArgs e)
+        {
+            m_AppLogic.LogOutFromFacebook();
+            hideUIComponents();
+            FormLogin_Load();
         }
     }
 }

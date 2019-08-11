@@ -17,7 +17,7 @@ namespace C19_Ex01_Omer_204059331_Andrey_321082513.sln
             string tempPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
             tempPath = Path.Combine(tempPath, i_DataFileName);
             m_Token = i_DataToSave;
-            using (Stream stream = new FileStream(tempPath, FileMode.CreateNew))
+            using (Stream stream = new FileStream(tempPath, FileMode.Create))
             {
                 XmlSerializer xmlSerializer = new XmlSerializer(this.GetType());
                 xmlSerializer.Serialize(stream, this);
@@ -36,8 +36,11 @@ namespace C19_Ex01_Omer_204059331_Andrey_321082513.sln
                 {
                     XmlSerializer xmlSerializer = new XmlSerializer(this.GetType());
                     temp = xmlSerializer.Deserialize(stream) as StoreToken;
-                    m_Token = temp.m_Token;
-                    loadRes = true;
+                    if(temp.m_Token != string.Empty)
+                    {
+                        m_Token = temp.m_Token;
+                        loadRes = true;
+                    }
                 }
             }
 

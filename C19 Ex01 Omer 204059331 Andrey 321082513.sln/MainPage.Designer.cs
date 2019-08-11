@@ -64,6 +64,7 @@
             System.Windows.Forms.Label nameLabel1;
             this.LoginButton = new System.Windows.Forms.Button();
             this.panelOptions = new System.Windows.Forms.Panel();
+            this.buttonGetBestFriends = new System.Windows.Forms.Button();
             this.buttonPhotos = new System.Windows.Forms.Button();
             this.buttonPages = new System.Windows.Forms.Button();
             this.buttonFriends = new System.Windows.Forms.Button();
@@ -134,7 +135,8 @@
             this.imageLargePictureBox = new System.Windows.Forms.PictureBox();
             this.panelUpPart = new System.Windows.Forms.Panel();
             this.buttonPostStatusOnAllFriendsWall = new System.Windows.Forms.Button();
-            this.buttonGetBestFriends = new System.Windows.Forms.Button();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.buttonLogout = new System.Windows.Forms.Button();
             nameLabel = new System.Windows.Forms.Label();
             birthdayLabel = new System.Windows.Forms.Label();
             captionLabel = new System.Windows.Forms.Label();
@@ -198,6 +200,7 @@
             this.panelFriends.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageLargePictureBox)).BeginInit();
             this.panelUpPart.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // nameLabel
@@ -513,6 +516,19 @@
             this.panelOptions.Size = new System.Drawing.Size(83, 458);
             this.panelOptions.TabIndex = 1;
             this.panelOptions.Visible = false;
+            // 
+            // buttonGetBestFriends
+            // 
+            this.buttonGetBestFriends.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Aqua;
+            this.buttonGetBestFriends.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Aqua;
+            this.buttonGetBestFriends.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGetBestFriends.Location = new System.Drawing.Point(0, 321);
+            this.buttonGetBestFriends.Name = "buttonGetBestFriends";
+            this.buttonGetBestFriends.Size = new System.Drawing.Size(81, 48);
+            this.buttonGetBestFriends.TabIndex = 14;
+            this.buttonGetBestFriends.Text = "Best friends";
+            this.buttonGetBestFriends.UseVisualStyleBackColor = true;
+            this.buttonGetBestFriends.Click += new System.EventHandler(this.buttonBestFriends_Click);
             // 
             // buttonPhotos
             // 
@@ -1177,18 +1193,16 @@
             this.buttonPostStatusOnAllFriendsWall.UseVisualStyleBackColor = true;
             this.buttonPostStatusOnAllFriendsWall.Click += new System.EventHandler(this.buttonPostOnAllFriends_Click);
             // 
-            // buttonGetBestFriends
+            // buttonLogout
             // 
-            this.buttonGetBestFriends.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Aqua;
-            this.buttonGetBestFriends.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Aqua;
-            this.buttonGetBestFriends.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonGetBestFriends.Location = new System.Drawing.Point(0, 321);
-            this.buttonGetBestFriends.Name = "buttonGetBestFriends";
-            this.buttonGetBestFriends.Size = new System.Drawing.Size(81, 48);
-            this.buttonGetBestFriends.TabIndex = 14;
-            this.buttonGetBestFriends.Text = "Best friends";
-            this.buttonGetBestFriends.UseVisualStyleBackColor = true;
-            this.buttonGetBestFriends.Click += new System.EventHandler(this.buttonBestFriends_Click);
+            this.buttonLogout.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonLogout.Location = new System.Drawing.Point(793, 260);
+            this.buttonLogout.Name = "buttonLogout";
+            this.buttonLogout.Size = new System.Drawing.Size(101, 23);
+            this.buttonLogout.TabIndex = 22;
+            this.buttonLogout.Text = "Logout";
+            this.buttonLogout.UseVisualStyleBackColor = false;
+            this.buttonLogout.Click += new System.EventHandler(this.buttonLogOut_Click);
             // 
             // MainPage
             // 
@@ -1196,6 +1210,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(978, 662);
+            this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.panelUpPart);
             this.Controls.Add(this.panelPage);
             this.Controls.Add(this.panelFriends);
@@ -1208,7 +1223,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "MainPage";
             this.Text = "Facebook";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.FormLogin_Load);
             this.panelOptions.ResumeLayout(false);
             this.panelPageOwner.ResumeLayout(false);
             this.panelPageOwner.PerformLayout();
@@ -1248,6 +1263,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.imageLargePictureBox)).EndInit();
             this.panelUpPart.ResumeLayout(false);
             this.panelUpPart.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1327,5 +1343,7 @@
         private System.Windows.Forms.Panel panelUpPart;
         private System.Windows.Forms.Button buttonPostStatusOnAllFriendsWall;
         private System.Windows.Forms.Button buttonGetBestFriends;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.Button buttonLogout;
     }
 }
