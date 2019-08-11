@@ -1,6 +1,6 @@
 ﻿namespace C19_Ex01_Omer_204059331_Andrey_321082513.sln
 {
-    partial class MainPage
+    public partial class MainPage
     {
         /// <summary>
         /// Required designer variable.
@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -92,7 +93,7 @@
             this.likedByBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.commentsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.likedByBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxPostStatus = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonPost = new System.Windows.Forms.Button();
             this.panelProfile = new System.Windows.Forms.Panel();
@@ -122,16 +123,18 @@
             this.postsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.statusesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panelPage = new System.Windows.Forms.Panel();
+            this.checkinsCountLabel1 = new System.Windows.Forms.Label();
+            this.descriptionLabel1 = new System.Windows.Forms.Label();
+            this.imageLargePictureBox2 = new System.Windows.Forms.PictureBox();
+            this.likesCountLabel1 = new System.Windows.Forms.Label();
+            this.nameLabel9 = new System.Windows.Forms.Label();
             this.panelFriends = new System.Windows.Forms.Panel();
             this.birthdayLabel2 = new System.Windows.Forms.Label();
             this.nameLabel11 = new System.Windows.Forms.Label();
             this.imageLargePictureBox = new System.Windows.Forms.PictureBox();
-            this.checkinsCountLabel1 = new System.Windows.Forms.Label();
-            this.descriptionLabel1 = new System.Windows.Forms.Label();
-            this.likesCountLabel1 = new System.Windows.Forms.Label();
-            this.nameLabel9 = new System.Windows.Forms.Label();
-            this.imageLargePictureBox2 = new System.Windows.Forms.PictureBox();
             this.panelUpPart = new System.Windows.Forms.Panel();
+            this.buttonPostStatusOnAllFriendsWall = new System.Windows.Forms.Button();
+            this.buttonGetBestFriends = new System.Windows.Forms.Button();
             nameLabel = new System.Windows.Forms.Label();
             birthdayLabel = new System.Windows.Forms.Label();
             captionLabel = new System.Windows.Forms.Label();
@@ -191,9 +194,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.postsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statusesBindingSource)).BeginInit();
             this.panelPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageLargePictureBox2)).BeginInit();
             this.panelFriends.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageLargePictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageLargePictureBox2)).BeginInit();
             this.panelUpPart.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -439,6 +442,51 @@
             birthdayLabel1.TabIndex = 16;
             birthdayLabel1.Text = "Birthday:";
             // 
+            // checkinsCountLabel
+            // 
+            checkinsCountLabel.AutoSize = true;
+            checkinsCountLabel.Location = new System.Drawing.Point(348, 65);
+            checkinsCountLabel.Name = "checkinsCountLabel";
+            checkinsCountLabel.Size = new System.Drawing.Size(85, 13);
+            checkinsCountLabel.TabIndex = 0;
+            checkinsCountLabel.Text = "Checkins Count:";
+            // 
+            // descriptionLabel
+            // 
+            descriptionLabel.AutoSize = true;
+            descriptionLabel.Location = new System.Drawing.Point(348, 88);
+            descriptionLabel.Name = "descriptionLabel";
+            descriptionLabel.Size = new System.Drawing.Size(63, 13);
+            descriptionLabel.TabIndex = 2;
+            descriptionLabel.Text = "Description:";
+            // 
+            // imageLargeLabel1
+            // 
+            imageLargeLabel1.AutoSize = true;
+            imageLargeLabel1.Location = new System.Drawing.Point(49, 41);
+            imageLargeLabel1.Name = "imageLargeLabel1";
+            imageLargeLabel1.Size = new System.Drawing.Size(69, 13);
+            imageLargeLabel1.TabIndex = 4;
+            imageLargeLabel1.Text = "Image Large:";
+            // 
+            // likesCountLabel
+            // 
+            likesCountLabel.AutoSize = true;
+            likesCountLabel.Location = new System.Drawing.Point(348, 112);
+            likesCountLabel.Name = "likesCountLabel";
+            likesCountLabel.Size = new System.Drawing.Size(66, 13);
+            likesCountLabel.TabIndex = 6;
+            likesCountLabel.Text = "Likes Count:";
+            // 
+            // nameLabel1
+            // 
+            nameLabel1.AutoSize = true;
+            nameLabel1.Location = new System.Drawing.Point(348, 39);
+            nameLabel1.Name = "nameLabel1";
+            nameLabel1.Size = new System.Drawing.Size(38, 13);
+            nameLabel1.TabIndex = 8;
+            nameLabel1.Text = "Name:";
+            // 
             // LoginButton
             // 
             this.LoginButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -452,6 +500,7 @@
             // 
             // panelOptions
             // 
+            this.panelOptions.Controls.Add(this.buttonGetBestFriends);
             this.panelOptions.Controls.Add(this.buttonPhotos);
             this.panelOptions.Controls.Add(this.buttonPages);
             this.panelOptions.Controls.Add(this.buttonFriends);
@@ -734,12 +783,12 @@
             this.likedByBindingSource1.DataMember = "LikedBy";
             this.likedByBindingSource1.DataSource = this.postBindingSource;
             // 
-            // textBox1
+            // textBoxPostStatus
             // 
-            this.textBox1.Location = new System.Drawing.Point(112, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(455, 20);
-            this.textBox1.TabIndex = 9;
+            this.textBoxPostStatus.Location = new System.Drawing.Point(112, 4);
+            this.textBoxPostStatus.Name = "textBoxPostStatus";
+            this.textBoxPostStatus.Size = new System.Drawing.Size(455, 20);
+            this.textBoxPostStatus.TabIndex = 9;
             // 
             // label1
             // 
@@ -755,13 +804,13 @@
             this.buttonPost.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Aqua;
             this.buttonPost.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Aqua;
             this.buttonPost.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPost.Location = new System.Drawing.Point(570, 5);
+            this.buttonPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPost.Location = new System.Drawing.Point(441, 26);
             this.buttonPost.Margin = new System.Windows.Forms.Padding(0);
             this.buttonPost.Name = "buttonPost";
-            this.buttonPost.Size = new System.Drawing.Size(51, 20);
+            this.buttonPost.Size = new System.Drawing.Size(208, 27);
             this.buttonPost.TabIndex = 14;
-            this.buttonPost.Text = "POST";
+            this.buttonPost.Text = "Post";
             this.buttonPost.UseVisualStyleBackColor = true;
             // 
             // panelProfile
@@ -1014,6 +1063,51 @@
             this.panelPage.Size = new System.Drawing.Size(793, 351);
             this.panelPage.TabIndex = 19;
             // 
+            // checkinsCountLabel1
+            // 
+            this.checkinsCountLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.languagesBindingSource, "CheckinsCount", true));
+            this.checkinsCountLabel1.Location = new System.Drawing.Point(439, 65);
+            this.checkinsCountLabel1.Name = "checkinsCountLabel1";
+            this.checkinsCountLabel1.Size = new System.Drawing.Size(100, 23);
+            this.checkinsCountLabel1.TabIndex = 1;
+            this.checkinsCountLabel1.Text = "label7";
+            // 
+            // descriptionLabel1
+            // 
+            this.descriptionLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.languagesBindingSource, "Description", true));
+            this.descriptionLabel1.Location = new System.Drawing.Point(439, 88);
+            this.descriptionLabel1.Name = "descriptionLabel1";
+            this.descriptionLabel1.Size = new System.Drawing.Size(100, 23);
+            this.descriptionLabel1.TabIndex = 3;
+            this.descriptionLabel1.Text = "label7";
+            // 
+            // imageLargePictureBox2
+            // 
+            this.imageLargePictureBox2.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.languagesBindingSource, "ImageLarge", true));
+            this.imageLargePictureBox2.Location = new System.Drawing.Point(133, 52);
+            this.imageLargePictureBox2.Name = "imageLargePictureBox2";
+            this.imageLargePictureBox2.Size = new System.Drawing.Size(160, 144);
+            this.imageLargePictureBox2.TabIndex = 5;
+            this.imageLargePictureBox2.TabStop = false;
+            // 
+            // likesCountLabel1
+            // 
+            this.likesCountLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.languagesBindingSource, "LikesCount", true));
+            this.likesCountLabel1.Location = new System.Drawing.Point(439, 112);
+            this.likesCountLabel1.Name = "likesCountLabel1";
+            this.likesCountLabel1.Size = new System.Drawing.Size(100, 23);
+            this.likesCountLabel1.TabIndex = 7;
+            this.likesCountLabel1.Text = "label7";
+            // 
+            // nameLabel9
+            // 
+            this.nameLabel9.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.languagesBindingSource, "Name", true));
+            this.nameLabel9.Location = new System.Drawing.Point(439, 39);
+            this.nameLabel9.Name = "nameLabel9";
+            this.nameLabel9.Size = new System.Drawing.Size(100, 23);
+            this.nameLabel9.TabIndex = 9;
+            this.nameLabel9.Text = "label7";
+            // 
             // panelFriends
             // 
             this.panelFriends.Controls.Add(birthdayLabel1);
@@ -1054,100 +1148,11 @@
             this.imageLargePictureBox.TabIndex = 15;
             this.imageLargePictureBox.TabStop = false;
             // 
-            // checkinsCountLabel
-            // 
-            checkinsCountLabel.AutoSize = true;
-            checkinsCountLabel.Location = new System.Drawing.Point(348, 65);
-            checkinsCountLabel.Name = "checkinsCountLabel";
-            checkinsCountLabel.Size = new System.Drawing.Size(85, 13);
-            checkinsCountLabel.TabIndex = 0;
-            checkinsCountLabel.Text = "Checkins Count:";
-            // 
-            // checkinsCountLabel1
-            // 
-            this.checkinsCountLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.languagesBindingSource, "CheckinsCount", true));
-            this.checkinsCountLabel1.Location = new System.Drawing.Point(439, 65);
-            this.checkinsCountLabel1.Name = "checkinsCountLabel1";
-            this.checkinsCountLabel1.Size = new System.Drawing.Size(100, 23);
-            this.checkinsCountLabel1.TabIndex = 1;
-            this.checkinsCountLabel1.Text = "label7";
-            // 
-            // descriptionLabel
-            // 
-            descriptionLabel.AutoSize = true;
-            descriptionLabel.Location = new System.Drawing.Point(348, 88);
-            descriptionLabel.Name = "descriptionLabel";
-            descriptionLabel.Size = new System.Drawing.Size(63, 13);
-            descriptionLabel.TabIndex = 2;
-            descriptionLabel.Text = "Description:";
-            // 
-            // descriptionLabel1
-            // 
-            this.descriptionLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.languagesBindingSource, "Description", true));
-            this.descriptionLabel1.Location = new System.Drawing.Point(439, 88);
-            this.descriptionLabel1.Name = "descriptionLabel1";
-            this.descriptionLabel1.Size = new System.Drawing.Size(100, 23);
-            this.descriptionLabel1.TabIndex = 3;
-            this.descriptionLabel1.Text = "label7";
-            // 
-            // imageLargeLabel1
-            // 
-            imageLargeLabel1.AutoSize = true;
-            imageLargeLabel1.Location = new System.Drawing.Point(49, 41);
-            imageLargeLabel1.Name = "imageLargeLabel1";
-            imageLargeLabel1.Size = new System.Drawing.Size(69, 13);
-            imageLargeLabel1.TabIndex = 4;
-            imageLargeLabel1.Text = "Image Large:";
-            // 
-            // likesCountLabel
-            // 
-            likesCountLabel.AutoSize = true;
-            likesCountLabel.Location = new System.Drawing.Point(348, 112);
-            likesCountLabel.Name = "likesCountLabel";
-            likesCountLabel.Size = new System.Drawing.Size(66, 13);
-            likesCountLabel.TabIndex = 6;
-            likesCountLabel.Text = "Likes Count:";
-            // 
-            // likesCountLabel1
-            // 
-            this.likesCountLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.languagesBindingSource, "LikesCount", true));
-            this.likesCountLabel1.Location = new System.Drawing.Point(439, 112);
-            this.likesCountLabel1.Name = "likesCountLabel1";
-            this.likesCountLabel1.Size = new System.Drawing.Size(100, 23);
-            this.likesCountLabel1.TabIndex = 7;
-            this.likesCountLabel1.Text = "label7";
-            // 
-            // nameLabel1
-            // 
-            nameLabel1.AutoSize = true;
-            nameLabel1.Location = new System.Drawing.Point(348, 39);
-            nameLabel1.Name = "nameLabel1";
-            nameLabel1.Size = new System.Drawing.Size(38, 13);
-            nameLabel1.TabIndex = 8;
-            nameLabel1.Text = "Name:";
-            // 
-            // nameLabel9
-            // 
-            this.nameLabel9.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.languagesBindingSource, "Name", true));
-            this.nameLabel9.Location = new System.Drawing.Point(439, 39);
-            this.nameLabel9.Name = "nameLabel9";
-            this.nameLabel9.Size = new System.Drawing.Size(100, 23);
-            this.nameLabel9.TabIndex = 9;
-            this.nameLabel9.Text = "label7";
-            // 
-            // imageLargePictureBox2
-            // 
-            this.imageLargePictureBox2.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.languagesBindingSource, "ImageLarge", true));
-            this.imageLargePictureBox2.Location = new System.Drawing.Point(133, 52);
-            this.imageLargePictureBox2.Name = "imageLargePictureBox2";
-            this.imageLargePictureBox2.Size = new System.Drawing.Size(160, 144);
-            this.imageLargePictureBox2.TabIndex = 5;
-            this.imageLargePictureBox2.TabStop = false;
-            // 
             // panelUpPart
             // 
+            this.panelUpPart.Controls.Add(this.buttonPostStatusOnAllFriendsWall);
             this.panelUpPart.Controls.Add(this.label1);
-            this.panelUpPart.Controls.Add(this.textBox1);
+            this.panelUpPart.Controls.Add(this.textBoxPostStatus);
             this.panelUpPart.Controls.Add(this.buttonPost);
             this.panelUpPart.Controls.Add(this.mainLabel);
             this.panelUpPart.Controls.Add(this.mainListBox);
@@ -1156,6 +1161,34 @@
             this.panelUpPart.Size = new System.Drawing.Size(649, 293);
             this.panelUpPart.TabIndex = 21;
             this.panelUpPart.Visible = false;
+            // 
+            // buttonPostStatusOnAllFriendsWall
+            // 
+            this.buttonPostStatusOnAllFriendsWall.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Aqua;
+            this.buttonPostStatusOnAllFriendsWall.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Aqua;
+            this.buttonPostStatusOnAllFriendsWall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPostStatusOnAllFriendsWall.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPostStatusOnAllFriendsWall.Location = new System.Drawing.Point(441, 53);
+            this.buttonPostStatusOnAllFriendsWall.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonPostStatusOnAllFriendsWall.Name = "buttonPostStatusOnAllFriendsWall";
+            this.buttonPostStatusOnAllFriendsWall.Size = new System.Drawing.Size(208, 26);
+            this.buttonPostStatusOnAllFriendsWall.TabIndex = 15;
+            this.buttonPostStatusOnAllFriendsWall.Text = "Post Status on all your friends wall";
+            this.buttonPostStatusOnAllFriendsWall.UseVisualStyleBackColor = true;
+            this.buttonPostStatusOnAllFriendsWall.Click += new System.EventHandler(this.buttonPostOnAllFriends_Click);
+            // 
+            // buttonGetBestFriends
+            // 
+            this.buttonGetBestFriends.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Aqua;
+            this.buttonGetBestFriends.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Aqua;
+            this.buttonGetBestFriends.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGetBestFriends.Location = new System.Drawing.Point(0, 321);
+            this.buttonGetBestFriends.Name = "buttonGetBestFriends";
+            this.buttonGetBestFriends.Size = new System.Drawing.Size(81, 48);
+            this.buttonGetBestFriends.TabIndex = 14;
+            this.buttonGetBestFriends.Text = "Best friends";
+            this.buttonGetBestFriends.UseVisualStyleBackColor = true;
+            this.buttonGetBestFriends.Click += new System.EventHandler(this.buttonBestFriends_Click);
             // 
             // MainPage
             // 
@@ -1209,10 +1242,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.statusesBindingSource)).EndInit();
             this.panelPage.ResumeLayout(false);
             this.panelPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageLargePictureBox2)).EndInit();
             this.panelFriends.ResumeLayout(false);
             this.panelFriends.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageLargePictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageLargePictureBox2)).EndInit();
             this.panelUpPart.ResumeLayout(false);
             this.panelUpPart.PerformLayout();
             this.ResumeLayout(false);
@@ -1252,7 +1285,7 @@
         private System.Windows.Forms.BindingSource likedByBindingSource1;
         private System.Windows.Forms.ListBox commentsListBox;
         private System.Windows.Forms.BindingSource commentsBindingSource2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxPostStatus;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonPost;
         private System.Windows.Forms.Panel panelProfile;
@@ -1292,6 +1325,7 @@
         private System.Windows.Forms.Label nameLabel9;
         private System.Windows.Forms.PictureBox imageLargePictureBox2;
         private System.Windows.Forms.Panel panelUpPart;
+        private System.Windows.Forms.Button buttonPostStatusOnAllFriendsWall;
+        private System.Windows.Forms.Button buttonGetBestFriends;
     }
 }
-

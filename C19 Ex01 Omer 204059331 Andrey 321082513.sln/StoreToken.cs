@@ -1,16 +1,17 @@
-﻿using FacebookWrapper.ObjectModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
+using FacebookWrapper.ObjectModel;
 
 namespace C19_Ex01_Omer_204059331_Andrey_321082513.sln
 {
     public class StoreToken
     {
         public string m_Token { get; set; }
+
         public void SaveLogin(string i_DataToSave, string i_DataFileName)
         {
             string tempPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
@@ -22,6 +23,7 @@ namespace C19_Ex01_Omer_204059331_Andrey_321082513.sln
                 xmlSerializer.Serialize(stream, this);
             }
         }
+
         public bool LoadLogin(string i_DataFileName)
         {
             bool loadRes = false;
@@ -38,6 +40,7 @@ namespace C19_Ex01_Omer_204059331_Andrey_321082513.sln
                     loadRes = true;
                 }
             }
+
             return loadRes;
         }
     }

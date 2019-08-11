@@ -1,10 +1,10 @@
-﻿using C19_Ex01_Omer_204059331_Andrey_321082513.sln;
-using FacebookWrapper;
-using FacebookWrapper.ObjectModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using C19_Ex01_Omer_204059331_Andrey_321082513.sln;
+using FacebookWrapper;
+using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp
 {
@@ -12,12 +12,13 @@ namespace FacebookApp
     {
         private static readonly object m_AppLogicLock = new object();
         private static AppLogic m_AppLogic = null;
+        private readonly string r_TokenFileName = "DB.txt";
         private StoreToken m_StoreToken = new StoreToken();
-        private readonly string tokenFileName = "DB.txt"; //TODO: change variable name to Guy's stupid convention
+
         private AppLogic()
         {
         }
-
+        
         public static AppLogic Instance
         {
             get
@@ -39,26 +40,22 @@ namespace FacebookApp
 
         public LoginResult LoginResult { get; set; }
 
-        
-
-        public void PostPhoto(Photo i_Photo, UserData i_UserData)
+        public void PostPhoto(Photo i_Photo, User i_User)
         {
-            i_UserData.LocalUser.PostLink(i_Photo.Link);
+            i_User.PostLink(i_Photo.Link);
         }
 
         public UserData LoginAndInit()
         {
             UserData resUserData = null;
-            if (m_StoreToken.LoadLogin(tokenFileName))
+            if (m_StoreToken.LoadLogin(r_TokenFileName))
             {
-                //Not sure why its not working, can you check?
                 LoginResult = FacebookService.Connect(m_StoreToken.m_Token);
             }
             else
             {
                 LoginResult = FacebookService.Login(
                     "1450160541956417",
-                    // "753926335063958",
                     "public_profile",
                     "email",
                     "publish_to_groups",
@@ -80,30 +77,28 @@ namespace FacebookApp
 
                 if (!string.IsNullOrEmpty(LoginResult.AccessToken))
                 {
-                    m_StoreToken.SaveLogin(LoginResult.AccessToken, tokenFileName);
+                    m_StoreToken.SaveLogin(LoginResult.AccessToken, r_TokenFileName);
                 }
             }
+
             resUserData = new UserData(LoginResult.LoggedInUser);
             FetchUserData(resUserData);
             return resUserData;
         }
 
-
-        public Status PostStatus(string io_text, UserData i_UserData)
+        public Status PostStatus(string io_text, User i_User)
         {
-            Status postedStatus = i_UserData.LocalUser.PostStatus(io_text);
+            Status postedStatus = i_User.PostStatus(io_text);
             return postedStatus;
         }
 
-
-        private void GetAllUserStatus(UserData i_UserData)
+        private void getAllUserStatus(UserData i_UserData)
         {
             foreach (Status currStatus in i_UserData.LocalUser.Statuses)
             {
                 i_UserData.UserStatusList.Add(currStatus);
             }
         }
-
 
         public User FindFriendByName(string i_friendNameToFind, UserData i_UserData)
         {
@@ -122,18 +117,16 @@ namespace FacebookApp
             return friend;
         }
 
-
         public void FetchUserData(UserData i_UserData)
         {
-            GetAllTheNoEmptyAlbums(i_UserData);
-            GetAllUserFriends(i_UserData);
-            GetAllUserStatus(i_UserData);
-            GetAllTaggedFriendsFromCheckins(i_UserData);
-            GetAllTaggedFriendsFromPhotos(i_UserData);
+            getAllTheNoEmptyAlbums(i_UserData);
+            getAllUserFriends(i_UserData);
+            getAllUserStatus(i_UserData);
+            getAllTaggedFriendsFromCheckins(i_UserData);
+            getAllTaggedFriendsFromPhotos(i_UserData);
         }
 
-
-        private void GetAllTheNoEmptyAlbums(UserData i_UserData)
+        private void getAllTheNoEmptyAlbums(UserData i_UserData)
         {
             foreach (Album album in i_UserData.LocalUser.Albums)
             {
@@ -161,8 +154,12 @@ namespace FacebookApp
 
         private void collectUsersFromTag(PhotoTag i_Tag, UserData i_UserData)
         {
-            string currUserNameAsKey = "";
+            string currUserNameAsKey = string.Empty;
             currUserNameAsKey = getUserFullName(i_Tag.User);
+            if(checkIfFriendIsNotLocalUser(i_UserData.LocalUser, i_Tag.User))
+            {
+                return;
+            }
 
             if (i_UserData.BestFriendsDict.ContainsKey(currUserNameAsKey))
             {
@@ -173,8 +170,17 @@ namespace FacebookApp
                 i_UserData.BestFriendsDict.Add(currUserNameAsKey, 1);
             }
         }
-        
-        public void GetAllTaggedFriendsFromPhotos(UserData i_UserData)
+
+        private bool checkIfFriendIsNotLocalUser(User i_LocalUser, User i_FriendUser)
+        {
+            bool isLocalUser = false;
+            string currLoggedInUserFullName = getUserFullName(i_LocalUser);
+            string friendFullName = getUserFullName(i_FriendUser);
+            isLocalUser = friendFullName == currLoggedInUserFullName;
+            return isLocalUser;
+        }
+
+        private void getAllTaggedFriendsFromPhotos(UserData i_UserData)
         {
             foreach (Album currAlbum in i_UserData.NonEmptyAlbumsList)
             {
@@ -187,20 +193,23 @@ namespace FacebookApp
                             collectUsersFromTag(currPhotoTag, i_UserData);
                         }
                     }
-
                 }
             }
         }
 
-
-        private void GetAllTaggedFriendsFromCheckins(UserData i_UserData)
+        private void getAllTaggedFriendsFromCheckins(UserData i_UserData)
         {
-            string currUserNameAsKey = "";
+            string currUserNameAsKey = string.Empty;
             foreach (Checkin currCheckin in i_UserData.LocalUser.Checkins)
             {
                 foreach (User currUser in currCheckin.TaggedUsers)
                 {
-                    currUserNameAsKey = currUser.FirstName + " " + currUser.LastName;
+                    currUserNameAsKey = getUserFullName(currUser);
+                    if (checkIfFriendIsNotLocalUser(i_UserData.LocalUser, currUser)) 
+                    {
+                        continue;
+                    }
+
                     if (i_UserData.BestFriendsDict.ContainsKey(currUserNameAsKey))
                     {
                         i_UserData.BestFriendsDict[currUserNameAsKey] += 1;
@@ -213,8 +222,7 @@ namespace FacebookApp
             }
         }
 
-
-        private void GetAllUserFriends(UserData i_UserData)
+        private void getAllUserFriends(UserData i_UserData)
         {
             foreach (User user in i_UserData.LocalUser.Friends)
             {
@@ -222,11 +230,9 @@ namespace FacebookApp
             }
         }
 
-
         public List<string> GetTopFiveBestFriends(UserData i_UserData)
         {
             return new List<string>(i_UserData.OrderDictByValueInt(i_UserData.BestFriendsDict).Keys);
         }
     }
 }
-
